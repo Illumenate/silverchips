@@ -58,7 +58,7 @@ def view_content(request, pk, slug=None):
     if content.slug != slug:
         return redirect("home:view_content", content.slug, content.pk)
 
-    if not content.publishable:
+    if not content.visibility==content.PUBLISHED:
         # This content shouldn't have it's own page!
         return HttpResponseForbidden("This content is not publishable.")
 
